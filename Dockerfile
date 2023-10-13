@@ -50,7 +50,7 @@ LABEL maintainer="Kyle Manna <kyle@kylemanna.com>"
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 ENV HOME /bitcoin
-EXPOSE 8332 8333
+EXPOSE 8332 8333 29000
 VOLUME ["/bitcoin/.bitcoin"]
 WORKDIR /bitcoin
 
