@@ -49,15 +49,16 @@ FROM ubuntu:latest
 LABEL maintainer="Kyle Manna <kyle@kylemanna.com>"
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-ENV HOME /bitcoin
+ENV HOME /data
 EXPOSE 8332 8333
-VOLUME ["/bitcoin/.bitcoin"]
-WORKDIR /bitcoin
+VOLUME ["/data/.bitcoin"]
+WORKDIR /data
 
 ARG GROUP_ID=1000
 ARG USER_ID=1000
 RUN groupadd -g ${GROUP_ID} bitcoin \
-    && useradd -u ${USER_ID} -g bitcoin -d /bitcoin bitcoin
+    && useradd -u ${USER_ID} -g bitcoin -d /data bitcoin \
+    && chown -R bitcoin:bitcoin /data
 
 COPY --from=build /opt/ /opt/
 
