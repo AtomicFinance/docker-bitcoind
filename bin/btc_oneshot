@@ -13,4 +13,8 @@ if [ $# -eq 0 ]; then
     set -- '-rpcbind=:8332' '-rpcallowip=0.0.0.0/0'
 fi
 
+# Run bitcoin-cli loadwallet default after a delay in the background
+(sleep 10; bitcoin-cli loadwallet default) &
+
+# Run bitcoind in the foreground
 exec bitcoind "$@"
