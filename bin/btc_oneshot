@@ -14,7 +14,7 @@ if [ $# -eq 0 ]; then
 fi
 
 # Run bitcoin-cli loadwallet default after a delay in the background
-(sleep 180; bitcoin-cli loadwallet default) &
+(sleep 240; bitcoin-cli loadwallet default) &
 
 # Run bitcoind in the foreground
 exec bitcoind "$@"
